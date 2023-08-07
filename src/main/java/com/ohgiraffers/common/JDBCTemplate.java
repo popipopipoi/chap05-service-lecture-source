@@ -27,6 +27,10 @@ public class JDBCTemplate {
 
             con = DriverManager.getConnection(url, prop);
 
+            /* Connection은 기본적으로 AutoCommit 설정으로 되어 있다.
+            * 해당 설정을 변경해주어야 논리적인 단위로 자바 어플리케이션 내의 트랜잭션 제어가 가능하다. */
+            con.setAutoCommit(false);  //AutoCommit을 하지 않겠다 라는 뜻
+
         } catch (IOException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
